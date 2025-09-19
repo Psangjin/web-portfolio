@@ -72,7 +72,7 @@ function App() {
       <div className="port-container">
         <div className="port-video">
           <video
-            src={process.env.PUBLIC_URL + '/videos/FarmBaro.mp4'}
+            src={process.env.PUBLIC_URL + '/videos/Farmbaro.mp4'}
             autoPlay
             muted
             loop
