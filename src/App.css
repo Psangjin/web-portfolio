@@ -1,38 +1,132 @@
-.App {
+/* ===== Global ===== */
+:root{
+  --text:#0f172a;          /* slate-900 */
+  --muted:#475569;         /* slate-600 */
+  --border:#e5e7eb;        /* gray-200 */
+  --card:#ffffff;
+  --shadow:0 6px 24px rgba(15,23,42,.08);
+}
+
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+body { margin: 0; background:#f8fafc; color:var(--text); font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+
+/* ===== App wrapper ===== */
+.App{
+  max-width: 1080px;
+  margin: 36px auto 80px;
+  padding: 0 16px;
+}
+
+.App h1{
+  margin: 0 0 28px;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* ===== Project card ===== */
+.port-container{
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 20px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px;
+  margin: 18px 0 24px;
+  box-shadow: var(--shadow);
+  transition: transform .15s ease, box-shadow .15s ease;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.port-container:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 12px 36px rgba(15,23,42,.12);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* ===== Video block ===== */
+.port-video{
+  width: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+.video-frame{
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;    /* 항상 16:9로 유지 */
+  background:#0b1220;
+  border-radius: 12px;
+  overflow: hidden;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.port-video video{
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;       /* 상하좌우 꽉 채워 보이게 */
+  outline: none;
+}
+
+/* ===== Info block ===== */
+.port-info h3{
+  margin: 2px 0 10px;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.port-info p{
+  margin: 6px 0;
+  line-height: 1.6;
+  font-size: 15px;
+  color: var(--text);
+}
+
+.port-info p:nth-child(2){ color: var(--muted); }  /* 일정 줄은 살짝 흐리게 */
+
+.port-info a{
+  text-decoration: none;
+  border-bottom: 1px dashed #94a3b8;
+  transition: border-color .2s ease;
+  word-break: break-all;  /* 긴 링크 줄바꿈 */
+}
+.port-info a:hover{ border-bottom-color:#0ea5e9; }
+
+/* ===== Small utilities ===== */
+.badge{
+  display:inline-block;
+  padding: 2px 8px;
+  font-size:12px;
+  border-radius:999px;
+  background:#f1f5f9;
+  color:#0f172a;
+  margin-right:6px;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px){
+  .port-container{ grid-template-columns: 1fr; }
+  .App h1{ font-size: 24px; }
+}
+@media (prefers-color-scheme: dark){
+  body{ background:#0b1020; color:#e5e7eb; }
+  .port-container{ background:#0f172a; border-color:#1f2937; box-shadow: 0 6px 24px rgba(0,0,0,.35); }
+  .port-info p{ color:#e5e7eb; }
+  .port-info a{ border-bottom-color:#64748b; }
+}
+
+/* ===== Bigger video: overrides ===== */
+.App{ max-width: 1280px; }                 /* 페이지 폭 넓게 */
+
+.port-container{
+  grid-template-columns: 2fr 1fr;          /* 영상 영역 더 넓게(≈ 66% : 34%) */
+  gap: 24px;
+  padding: 20px;
+}
+
+.port-video{ align-self: stretch; }        /* 세로로도 충분히 차게 */
+.video-frame{ aspect-ratio: 16 / 9; }      /* 16:9 유지, 높이 자동 */
+.port-video video{ object-fit: cover; }    /* 꽉 차게 보이도록 */
+
+@media (max-width: 900px){
+  .port-container{ grid-template-columns: 1fr; } /* 모바일은 한 열로 */
 }

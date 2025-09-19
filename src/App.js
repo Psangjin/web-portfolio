@@ -9,6 +9,7 @@ function App() {
      {/* 펀드플로우 */}
       <div className="port-container">
         <div className="port-video">
+           <div className="video-frame">
           <video
             src={process.env.PUBLIC_URL + '/videos/FundFlow.mp4'}
             autoPlay
@@ -18,6 +19,7 @@ function App() {
             preload="metadata"
             aria-label="펀드플로우 시연 영상"
           />
+          </div>
         </div>
         <div className="port-info">
           <h3>주제 : 펀드플로우</h3>
@@ -40,6 +42,7 @@ function App() {
      {/* 비즈보드 */}
       <div className="port-container">
         <div className="port-video">
+          <div className="video-frame">
           <video
             src={process.env.PUBLIC_URL + '/videos/BizBoard.mp4'}
             autoPlay
@@ -47,8 +50,9 @@ function App() {
             loop
             playsInline
             preload="metadata"
-            aria-label="비즈보드 시연 영상"
+            aria-label="비즈보드 시연 영상"            
           />
+          </div>
         </div>
         <div className="port-info">
           <h3>주제 : 비즈보드</h3>
@@ -71,6 +75,7 @@ function App() {
     {/* 목장바로 */}
       <div className="port-container">
         <div className="port-video">
+          <div className="video-frame">
           <video
             src={process.env.PUBLIC_URL + '/videos/Farmbaro.mp4'}
             autoPlay
@@ -80,6 +85,7 @@ function App() {
             preload="metadata"
             aria-label="목장바로 시연 영상"
           />
+          </div>
         </div>
         <div className="port-info">
           <h3>주제 : 목장바로</h3>
